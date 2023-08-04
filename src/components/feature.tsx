@@ -30,12 +30,12 @@ export function Feature({
         <h1 className='text-left text-4xl font-semibold text-[#0F172A]'>
           {title}
         </h1>
-        <p className='text-left text-lg font-normal text-[#64748B] sm:mb-8 sm:mt-4'>
+        <p className='mt-4 text-left text-lg font-normal text-[#64748B]'>
           {description}
         </p>
 
         {featureButton ? (
-          <div className='flex w-full justify-center gap-2 sm:w-auto sm:flex-row md:w-auto'>
+          <div className='mt-8 flex w-full justify-center gap-2 sm:w-auto sm:flex-row md:w-auto'>
             <Button
               key={featureButton.id}
               className='w-full sm:w-auto'
