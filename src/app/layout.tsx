@@ -2,50 +2,26 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Button } from '@/components/ui/button';
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { PageQuery } from '@/queries/page';
+import { getPage } from '@/queries/request';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const response = await fetch(
-    process.env.NEXT_PUBLIC_HYGRAPH_ENDPOINT as string,
-    {
-      method: 'POST',
-      headers: {
-        cache: 'no-store',
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${process.env.NEXT_PUBLIC_HYGRAPH_PERMANENTAUTH_TOKEN}`,
-      },
-      body: JSON.stringify({
-        query: PageQuery,
-        variables: { slug: 'home' },
-      }),
-    }
-  );
-
-  const { data } = await response.json();
+  const page = await getPage('home');
 
   return {
-    title: data.page.seo.title,
-    description: data.page.seo?.description,
-    keywords: data.page.seo.keywords,
+    title: page.seo?.title,
+    description: page.seo?.description,
+    keywords: page.seo?.keywords,
     openGraph: {
       images: [
         {
-          url: data.page.seo.openGraphImage.url,
-          width: data.page.seo.openGraphImage.width,
-          height: data.page.seo.openGraphImage.height,
+          url: page.seo?.openGraphImage.url || '',
+          width: page.seo?.openGraphImage.width,
+          height: page.seo?.openGraphImage.height,
         },
       ],
     },
@@ -99,13 +75,19 @@ export default function RootLayout({
             <div>
               <ul className='flex gap-4'>
                 <li>
-                  <a href='#'>Terms</a>
+                  <Button className='px-1 text-black' asChild variant='link'>
+                    <Link href='#'>Terms</Link>
+                  </Button>
                 </li>
                 <li>
-                  <a href='#'>Privacy</a>
+                  <Button className='px-1 text-black' asChild variant='link'>
+                    <Link href='#'>Privacy</Link>
+                  </Button>
                 </li>
                 <li>
-                  <a href='#'>Cookies</a>
+                  <Button className='px-1 text-black' asChild variant='link'>
+                    <Link href='#'>Cookies</Link>
+                  </Button>{' '}
                 </li>
               </ul>
             </div>

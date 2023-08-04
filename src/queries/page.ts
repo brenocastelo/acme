@@ -1,5 +1,5 @@
 export const PageQuery = `
-  query MyQuery($slug: String!) {
+  query QueyPage($slug: String!) {
     page(where: { slug: $slug }) {
       sections {
         ... on Section {
@@ -46,6 +46,7 @@ export const PageQuery = `
                 ... on EmbeddedVideo {
                   id
                   url
+                  altText
                 }
               }
             }

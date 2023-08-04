@@ -16,7 +16,7 @@ type Callout = {
   __typename: string;
   title: string;
   description: string;
-  actionButton: Button;
+  calloutbutton: Button;
 };
 
 type Hero = {
@@ -31,7 +31,7 @@ type FeatureSection = {
   title: string;
   description: string;
   label?: string;
-  actionButton: Button;
+  featureButton: Button;
   contentPosition: 'right' | 'left';
   media: Media;
 };
@@ -53,4 +53,18 @@ type Section = {
   blocks: Hero[] | FeatureSection[] | Callout[];
 };
 
-export type { Button, Section, Hero, Media, Callout, FeatureSection };
+type Seo = {
+  description: string;
+  id: string;
+  keywords: string[];
+  noIndex: boolean;
+  title: string;
+  openGraphImage: {
+    url: string;
+    width: number;
+    height: number;
+    id: string;
+  };
+};
+
+export type { Button, Section, Hero, Media, Callout, FeatureSection, Seo };

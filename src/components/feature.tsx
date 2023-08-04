@@ -5,7 +5,7 @@ import { FeatureSection } from '@/types';
 
 export function Feature({
   label,
-  actionButton,
+  featureButton,
   description,
   title,
   media,
@@ -30,24 +30,24 @@ export function Feature({
         <h1 className='text-left text-4xl font-semibold text-[#0F172A]'>
           {title}
         </h1>
-        <p className='mb-8 mt-4 text-left text-lg font-normal text-[#64748B]'>
+        <p className='text-left text-lg font-normal text-[#64748B] sm:mb-8 sm:mt-4'>
           {description}
         </p>
 
-        {actionButton ? (
+        {featureButton ? (
           <div className='flex w-full justify-center gap-2 sm:w-auto sm:flex-row md:w-auto'>
             <Button
-              key={actionButton.id}
+              key={featureButton.id}
               className='w-full sm:w-auto'
               size='sm'
             >
-              {actionButton.title}
+              {featureButton.title}
             </Button>
           </div>
         ) : null}
       </div>
       {media.__typename === 'Image' ? (
-        <div className='mt-12 flex flex-1 items-center justify-center rounded-3xl bg-[#F2F4F7] sm:py-12'>
+        <div className='flex flex-1 items-center justify-center rounded-3xl bg-[#F2F4F7] sm:mt-12 sm:py-12'>
           <Image
             src={url || ''}
             alt={media.altText || ''}

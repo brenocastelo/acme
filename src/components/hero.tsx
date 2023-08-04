@@ -1,4 +1,4 @@
-import type { Button as ButtonType, Hero as HeroType } from '@/types';
+import type { Hero as HeroType } from '@/types';
 import { Button } from './ui/button';
 
 export function Hero({ title, description, actionButtons }: HeroType) {
