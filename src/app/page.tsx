@@ -9,7 +9,7 @@ export default async function Home() {
   const page = await getPage('home');
 
   return (
-    <div className='flex min-h-screen flex-col items-center justify-between bg-blue-50/50'>
+    <div className='flex min-h-screen flex-col items-center justify-between'>
       <main className='w-full p-8'>
         {page.sections.map((section: SectionType) => (
           <Section key={section.id}>

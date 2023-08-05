@@ -23,14 +23,14 @@ export function Feature({
         contentPositionStyle
       )}
     >
-      <div className='flex-1 sm:flex sm:flex-col sm:items-start'>
+      <div className='sm:flex sm:w-2/4 sm:flex-col sm:items-start'>
         {label && (
           <span className='text-lg font-bold text-primary'>{label}</span>
         )}
-        <h1 className='text-left text-4xl font-semibold text-[#0F172A]'>
+        <h1 className='text-left text-4xl font-semibold text-foreground'>
           {title}
         </h1>
-        <p className='mt-4 text-left text-lg font-normal text-[#64748B]'>
+        <p className='mt-4 text-left text-lg font-normal text-muted'>
           {description}
         </p>
 
@@ -47,12 +47,13 @@ export function Feature({
         ) : null}
       </div>
       {media.__typename === 'Image' ? (
-        <div className='flex flex-1 items-center justify-center rounded-3xl bg-[#F2F4F7] sm:mt-12 sm:py-12'>
+        <div className='flex items-center justify-center rounded-3xl bg-card sm:mt-12 sm:p-10'>
           <Image
             src={url || ''}
             alt={media.altText || ''}
             height={320}
             width={480}
+            className='border border-gray-100'
           />
         </div>
       ) : (
